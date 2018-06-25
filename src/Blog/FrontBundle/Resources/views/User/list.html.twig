@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Rédacteurs
+{% endblock %}
+
+{% block body %}
+    <h2>Voici la liste des rédacteurs participant au blog</h2>
+    {% for user in users %}
+    <ul>
+        <li><a href="{{ url('blog_front_user_view', {'id': user.id}) }}">{{ user.name }}</a></li>
+    </ul>
+    {% endfor %}
+{% endblock %}

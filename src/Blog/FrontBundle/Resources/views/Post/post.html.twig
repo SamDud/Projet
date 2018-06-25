@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ parent() }} - {{ post.title }}
+{% endblock %}
+
+{% block body %}
+    <h2>{{ post.title|upper }}</h2>
+    <div class="post">
+        <p class="content">{{ post.text|striptags }}</p>
+        
+        <p class="details">Le <span class="date">{{ post.datePublish|date('d/m/Y') }}</span> par <a href="{{ url('blog_front_user_view', {'id': post.user.id}) }}" class="author">{{ post.user.name |title }}</a></p>
+    </div>
+    <hr />
+    <p> <a href="{{ path('blog_front_view_post',{'idpost' : post.id}) }}"> Commentaire + </p>
+    {% for comment in post.comments %}
+        <div class="comment">
+            <p class="title">{{ comment.title |striptags }}</p>
+            <p class="description">{{ comment.description |striptags }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

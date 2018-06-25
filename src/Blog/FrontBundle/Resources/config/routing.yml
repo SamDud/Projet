@@ -1,0 +1,28 @@
+blog_front_homepage:
+    path:     /
+    defaults: { _controller: BlogFrontBundle:Default:index }
+
+blog_front_view:
+    path:     /post/{id}
+    defaults: { _controller: BlogFrontBundle:Post:view }
+    requirements:
+        id : \d+
+
+blog_front_about:
+    path: /about
+    defaults: { _controller: BlogFrontBundle:Default:about}
+
+blog_front_user_view:
+    path: /user/{id}
+    defaults: { _controller: BlogFrontBundle:User:view}
+    requirements:
+            id : \d+
+
+blog_front_user_list:
+    path: /user/list
+    defaults: { _controller: BlogFrontBundle:User:list}
+
+blog_front_view_post:
+    path: /post/view/{idpost}
+    defaults: { _controller: BlogFrontBundle:Post:postView}
+    

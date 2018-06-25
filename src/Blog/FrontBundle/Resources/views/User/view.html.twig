@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - {{ user.name }}
+{% endblock %}
+
+{% block body %}
+    <h2>{{ user.name }} (<a href="mailto:{{ user.email|escape('url') }}">{{ user.email }}</a>)</h2>
+    <div class="post">
+        <p class="content">
+            {% if user.biography is not null %}
+                {{ user.biography.description |striptags }}
+            {% endif %}
+        </p>
+    </div>
+    <hr />
+    {% for post in user.posts %}
+    <ul>
+        <li><a href="{{ url('blog_front_view', {'id': post.id}) }}">{{ post.title|striptags }}</a></li>
+    </ul>
+    {% endfor %}
+{% endblock %}
